@@ -45,3 +45,11 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
     >>> Escriba su respuesta a partir de este punto <<<
 */
 
+INSERT OVERWRITE LOCAL DIRECTORY 'output'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+SELECT YEAR(c4) AS year
+        ,letter
+        ,COUNT(letter) AS letter_count
+FROM tbl0
+LATERAL VIEW EXPLODE(c5) tbl0 AS letter
+GROUP BY YEAR(c4), letter;
