@@ -30,4 +30,4 @@ SELECT letter
         ,dates
         ,number
 FROM letters
-ORDER BY 1,3;
+ORDER BY 1,3,2;
